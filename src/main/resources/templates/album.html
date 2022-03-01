@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Albums</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/album.css">
+</head>
+<body>
+    <header>
+        <ul>
+            <li><a href="/">home</a></li>
+            <li><a href="/albums">albums</a></li>
+        </ul>
+    </header>
+    <main>
+        <h1>Albums</h1>
+        <div class="album-group">
+            <article th:each="album : ${albums}">
+                <img th:src="${album.imageUrl}" alt="cover art" />
+                <h2 th:text="${album.artist}"></h2>
+                <div class="album-details">
+                    <h3 th:text="${album.title}"></h3>
+                    <h3 th:text="${'Songs: ' + album.songCount}"></h3>
+                    <h3 th:text="${album.lengthInSeconds / 60 + ':' + ('' + (100 + album.lengthInSeconds % 60)).substring(1) }"></h3>
+                </div>
+            </article>
+        </div>
+    </main>
+
+</body>
+</html>
