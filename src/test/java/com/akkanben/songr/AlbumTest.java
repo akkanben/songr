@@ -39,6 +39,14 @@ public class AlbumTest {
     }
 
     @Test
+    void test_getlengthinseconds() {
+        Album sut = new Album("In League With Dragons", "The Mountain Goats",
+                12,2903,
+                "https://coverartarchive.org/release/df8b0ea3-ed60-4fa3-b3ae-d71cfa4bc238/29548494788-250.jpg");
+        assertEquals(sut.getLengthInSeconds(),2903);
+    }
+
+    @Test
     void test_getimageurl() {
         Album sut = new Album("In League With Dragons", "The Mountain Goats",
                 12,2903,
@@ -72,6 +80,14 @@ public class AlbumTest {
         sut.setArtist("TMG");
         sut.setSongCount(1);
         assertEquals(sut.getSongCount(),1);
+    }
+
+    void test_setlengthinseconds() {
+        Album sut = new Album("In League With Dragons", "The Mountain Goats",
+                12,2903,
+                "https://coverartarchive.org/release/df8b0ea3-ed60-4fa3-b3ae-d71cfa4bc238/29548494788-250.jpg");
+        sut.setLengthInSeconds(100);
+        assertEquals(sut.getLengthInSeconds(),100);
     }
 
     @Test
