@@ -1,4 +1,4 @@
-package com.akkanben.songr;
+package com.akkanben.songr.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
