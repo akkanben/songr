@@ -29,6 +29,24 @@
                 </div>
             </article>
         </div>
+        <div class="new-album-form">
+            <form action="/addAlbum/" method="post">
+                <fieldset>
+                    <legend>Add an Album to the Database</legend>
+                    <label for="artist">Artist Name</label>
+                    <input type="text" name="artist">
+                    <label for="title">Album Title</label>
+                    <input type="text" name="title">
+                    <label for="songCount">Number of Songs</label>
+                    <input type="number" name="songCount">
+                    <label for="lengthInSeconds">Length in Seconds</label>
+                    <input type="number" name="lengthInSeconds">
+                    <label for="imageUrl">Album Cover URL</label>
+                    <input type="url" name="imageUrl">
+                    <input type="submit" value="Add Album">
+                </fieldset>
+            </form>
+        </div>
     </main>
 
 </body>

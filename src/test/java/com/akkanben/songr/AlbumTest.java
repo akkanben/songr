@@ -1,5 +1,6 @@
 package com.akkanben.songr;
 
+import com.akkanben.songr.model.Album;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
