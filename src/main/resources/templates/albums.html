@@ -11,12 +11,13 @@
 </head>
 <body>
     <header>
+        <span id="open-button" onclick="openForm()">&#9776;</span>
         <ul>
             <li><a href="/">home</a></li>
             <li><a href="/albums">albums</a></li>
         </ul>
     </header>
-    <main>
+    <main id="main">
         <h1>Albums</h1>
         <div class="album-group">
             <article th:each="album : ${albums}">
@@ -29,25 +30,37 @@
                 </div>
             </article>
         </div>
-        <div class="new-album-form">
+        <div id="side-form" class="side">
+            <a href="javascript:void(0)" class="close" onclick="closeForm()">&times;</a>
             <form action="/addAlbum/" method="post">
                 <fieldset>
                     <legend>Add an Album to the Database</legend>
                     <label for="artist">Artist Name</label>
-                    <input type="text" name="artist">
+                    <input type="text" name="artist" required>
                     <label for="title">Album Title</label>
-                    <input type="text" name="title">
+                    <input type="text" name="title" required>
                     <label for="songCount">Number of Songs</label>
-                    <input type="number" name="songCount">
+                    <input type="number" name="songCount" required>
                     <label for="lengthInSeconds">Length in Seconds</label>
-                    <input type="number" name="lengthInSeconds">
+                    <input type="number" name="lengthInSeconds" required>
                     <label for="imageUrl">Album Cover URL</label>
-                    <input type="url" name="imageUrl">
-                    <input type="submit" value="Add Album">
+                    <input type="url" name="imageUrl" required>
+                    <input class="button" type="submit" value="Add Album">
                 </fieldset>
             </form>
         </div>
     </main>
-
+<script>
+    function openForm() {
+        document.getElementById("side-form").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+        document.getElementById("open-button").style.opacity = "0";
+    }
+    function closeForm() {
+        document.getElementById("side-form").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+        document.getElementById("open-button").style.opacity = "1";
+    }
+</script>
 </body>
 </html>
