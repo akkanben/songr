@@ -12,6 +12,7 @@ public class Album {
     @Column(columnDefinition = "text")
     String title;
     @OneToMany(mappedBy = "album", cascade = CascadeType.ALL)
+    @OrderBy("trackNumber")
     List<Song> trackList;
     String artist;
     int songCount;
@@ -28,6 +29,14 @@ public class Album {
         this.songCount = songCount;
         this.lengthInSeconds = lengthInSeconds;
         this.imageUrl = imageUrl;
+    }
+
+    public void calculateAlbumLength() {
+        int total = 0;
+        for(Song track : trackList) {
+            total += track.length;
+        }
+        lengthInSeconds = total;
     }
 
     public long getId() {
