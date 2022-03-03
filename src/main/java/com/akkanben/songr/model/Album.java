@@ -1,9 +1,7 @@
 package com.akkanben.songr.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Album {
@@ -11,7 +9,10 @@ public class Album {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
+    @Column(columnDefinition = "text")
     String title;
+    @OneToMany(mappedBy = "album", cascade = CascadeType.ALL)
+    List<Song> trackList;
     String artist;
     int songCount;
     int lengthInSeconds;
@@ -27,6 +28,14 @@ public class Album {
         this.songCount = songCount;
         this.lengthInSeconds = lengthInSeconds;
         this.imageUrl = imageUrl;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public List<Song> getTrackList() {
+        return trackList;
     }
 
     public String getTitle() {
