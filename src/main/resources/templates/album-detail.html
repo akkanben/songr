@@ -21,7 +21,7 @@
     <main id="main">
         <h1>Album Detail</h1>
         <div class="album-group">
-            <article>
+            <article id="open-article" onclick="openForm()">
                 <img th:src="${album.imageUrl}" alt="cover art" />
                 <h2 th:text="${album.artist}"></h2>
                 <tr class="album-details">
@@ -45,8 +45,6 @@
                             </tfoot>
                         </table>
                     </div>
-
-                </div>
             </article>
         </div>
         <div id="side-form" class="side">
