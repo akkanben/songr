@@ -19,4 +19,10 @@ public class PracticeFeaturesController {
        return "capitalize.html";
     }
 
+    @GetMapping("hello/{name}")
+    public String helloName(Model m, @PathVariable String name) {
+        m.addAttribute("name",name);
+        return "hello.html";
+    }
+
 }
