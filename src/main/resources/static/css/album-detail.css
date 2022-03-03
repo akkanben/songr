@@ -32,7 +32,7 @@ h3 {
 }
 
 img {
-    max-width: 150px;
+    width: 400px;
 }
 
 main {
@@ -188,4 +188,35 @@ input {
 
 .close:hover {
     color: #DB93C4;
+}
+#table-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#all-songs {
+    border-collapse: collapse;
+    text-align: left;
+    width: 100%;
+}
+
+#all-songs td, #all-songs th {
+    border: 1px solid #ddd;
+    padding: 5px;
+}
+
+#all-songs tr {
+    background-color: white;
+}
+#all-songs tr:nth-child(even){background-color: #f2f2f2;}
+
+#all-songs tr:hover {background-color: #ddd;}
+
+#all-songs th {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    text-align: left;
+    background-color: #000000CC;
+    color: white;
 }

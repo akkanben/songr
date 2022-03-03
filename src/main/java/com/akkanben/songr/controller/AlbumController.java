@@ -2,11 +2,11 @@ package com.akkanben.songr.controller;
 
 import com.akkanben.songr.model.Album;
 import com.akkanben.songr.repository.AlbumRepository;
+import com.akkanben.songr.repository.SongRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.ArrayList;
@@ -17,6 +17,8 @@ public class AlbumController {
 
     @Autowired
     AlbumRepository albumRepository;
+    @Autowired
+    SongRepository songRepository;
 
     @GetMapping("albums")
     public String getAlbumPage(Model m) {
@@ -26,11 +28,18 @@ public class AlbumController {
         return "albums.html";
     }
 
-    @PostMapping("/addAlbum")
+    @PostMapping("addAlbum")
     public RedirectView addAlbum(String title, String artist, int songCount, int lengthInSeconds, String imageUrl) {
         Album album = new Album(title, artist, songCount, lengthInSeconds, imageUrl);
         albumRepository.save(album);
         return new RedirectView("/albums");
+    }
+
+    @GetMapping("/album-detail/{id}")
+    public String albumDetailView(@PathVariable long id, Model m) {
+        Album album = albumRepository.getById(id);
+        m.addAttribute("album", album);
+        return "album-detail.html";
     }
 
 

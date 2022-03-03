@@ -1,0 +1,31 @@
+#table-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#all-songs {
+    border-collapse: collapse;
+    width: 90%;
+    text-align: left;
+}
+
+#all-songs td, #all-songs th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#all-songs tr {
+    background-color: white;
+}
+#all-songs tr:nth-child(even){background-color: #f2f2f2;}
+
+#all-songs tr:hover {background-color: #ddd;}
+
+#all-songs th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #000000CC;
+    color: white;
+}
