@@ -11,9 +11,6 @@
     <title>All Songs</title>
 </head>
 <body>
-
-
-
 <header>
     <ul>
         <li><a href="/">home</a></li>
@@ -25,20 +22,20 @@
     <h1>All Songs</h1>
 
     <div id="table-container">
-    <table id="all-songs">
-        <tr>
-            <th>#</th>
-            <th>Song Title</th>
-            <th>Album Name</th>
-            <th>Length</th>
-        </tr>
-        <tr th:each="song : ${songs}">
-            <td th:text="${song.trackNumber}"></td>
-            <td th:text="${song.title}"></td>
-            <td th:text="${song.album.title}"></td>
-            <td th:text="${song.length / 60 + ':' + ('' + (100 + song.length % 60)).substring(1) }"></td>
-        </tr>
-    </table>
+        <table id="all-songs">
+            <tr>
+                <th>#</th>
+                <th>Song Title</th>
+                <th>Album Name</th>
+                <th>Length</th>
+            </tr>
+            <tr th:each="song : ${songs}">
+                <td th:text="${song.trackNumber}"></td>
+                <td th:text="${song.title}"></td>
+                <td th:text="${song.album.title}"></td>
+                <td th:text="${song.length / 60 + ':' + ('' + (100 + song.length % 60)).substring(1) }"></td>
+            </tr>
+        </table>
     </div>
 
 </body>
