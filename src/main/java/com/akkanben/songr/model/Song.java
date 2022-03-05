@@ -25,6 +25,8 @@ public class Song {
         this.album = album;
     }
 
+    public long getId() { return id; }
+
     public String getTitle() {
         return title;
     }

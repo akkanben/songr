@@ -7,6 +7,7 @@ import com.akkanben.songr.repository.SongRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,5 +39,14 @@ public class SongController {
         List<Song> songs = songRepository.findAll();
         m.addAttribute("songs", songs);
         return "songs.html";
+    }
+
+    @DeleteMapping("/delete-song")
+    public RedirectView deleteSong(long songId) {
+        Song song = songRepository.getById(songId);
+        Album album = song.getAlbum();
+        long albumId = album.getId();
+        songRepository.deleteById(songId);
+        return new RedirectView("/album-detail/" + albumId);
     }
 }

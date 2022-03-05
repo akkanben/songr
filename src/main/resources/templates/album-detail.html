@@ -26,17 +26,28 @@
                 <h2 th:text="${album.artist}"></h2>
                 <tr class="album-details">
                     <h3 th:text="${album.title}"></h3>
+                    <form action="/delete-album/" th:method="delete">
+                        <input type="hidden" name="albumId" th:value="${album.id}">
+                        <input type="submit" value="x">
+                    </form>
                     <div id="table-container">
                         <table id="all-songs">
                             <tr>
                                 <th>#</th>
                                 <th>Song Title</th>
                                 <th>Length</th>
+                                <th>x</th>
                             </tr>
                             <tr th:each="song : ${album.trackList}">
                                 <td th:text="${song.trackNumber}"></td>
                                 <td th:text="${song.title}"></td>
                                 <td th:text="${song.length / 60 + ':' + ('' + (100 + song.length % 60)).substring(1) }"></td>
+                                <td>
+                                    <form action="/delete-song/" th:method="delete">
+                                        <input type="hidden" name="songId" th:value="${song.id}">
+                                        <input type="submit" value="x">
+                                    </form>
+                                </td>
                             </tr>
                             <tfoot>
                                 <td></td>

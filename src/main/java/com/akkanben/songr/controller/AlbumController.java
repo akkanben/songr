@@ -1,6 +1,7 @@
 package com.akkanben.songr.controller;
 
 import com.akkanben.songr.model.Album;
+import com.akkanben.songr.model.Song;
 import com.akkanben.songr.repository.AlbumRepository;
 import com.akkanben.songr.repository.SongRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,11 @@ public class AlbumController {
         return "album-detail.html";
     }
 
+    @DeleteMapping("/delete-album")
+    public RedirectView deleteAlbum(long albumId) {
+        albumRepository.deleteById(albumId);
+        return new RedirectView("/albums");
+    }
 
     public ArrayList<Album> getAlbumArrayList() {
         ArrayList<Album> albums = new ArrayList<>();
